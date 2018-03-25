@@ -19,3 +19,12 @@ console.log(typeof arr);
 console.log(typeof nothing);
 console.log(8 / 0);
 console.log('sting' - 6);
+
+// input/output
+
+console.log('This is some message in console.');
+console.error('Something went wrong!');
+console.dir(arr);
+
+var userName = prompt('Say your name', 'Guest'); // cin
+alert('Hello, ' + userName); // cout
