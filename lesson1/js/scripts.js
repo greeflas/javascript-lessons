@@ -28,3 +28,10 @@ console.dir(arr);
 
 var userName = prompt('Say your name', 'Guest'); // cin
 alert('Hello, ' + userName); // cout
+
+// operators
+
+console.log('2 + 7 = ' + (2 + 7));
+
+var sum = 4 * 8;
+console.log('4 * 8 = ' + sum);
