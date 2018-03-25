@@ -1,6 +1,6 @@
 # JavaScript lessons
 
-Repository  with JavaScript lessons. All lessons also available on [GitHub Pages](https://greeflas.github.io/javascript-lessons/);
+Repository  with JavaScript lessons. All lessons also available on [GitHub Pages](https://greeflas.github.io/javascript-lessons/)
 
 Learning
 --------
