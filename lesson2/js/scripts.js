@@ -34,3 +34,8 @@ alert('Result: ' + result);
 for (var i = 0; i < 10; i++) {
     console.log(i + 1);
 }
+
+// while
+while (prompt('Input your age', 1) >= 18) {
+    alert('+18 content');
+}
