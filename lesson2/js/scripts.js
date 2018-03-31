@@ -39,3 +39,20 @@ for (var i = 0; i < 10; i++) {
 while (prompt('Input your age', 1) >= 18) {
     alert('+18 content');
 }
+
+// do-while
+
+var bankAccount = 1000;
+var price;
+
+do {
+    price = Math.random() * (bankAccount - 1) + 1;
+    price = Math.floor(price); // round number
+
+    bankAccount -= price;
+    alert('You bought product for $' + price);
+} while (bankAccount > 0);
+
+alert('Your balance is: $' + bankAccount);
+
+// break, continue
