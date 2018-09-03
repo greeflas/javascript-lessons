@@ -1,12 +1,19 @@
 function Filters()
 {
-    var minPrice;
-    var maxPrice;
+    var minPriceField;
+    var maxPriceField;
+
+    var urlHasParam = function (paramName) {
+        var currentUrl = window.location.search;
+        var re = new RegExp('&' + paramName + '=' + '[\\d]*');
+
+        return re.test(currentUrl);
+    };
 
     var updateUrl = function (param, value) {
         var currentUrl = window.location.search;
-        var re = new RegExp('&' + param + '=' + '[\\d]*');
         var urlPart = '&' + param + '=' + value;
+        var re = new RegExp('&' + param + '=' + '[\\d]*');
         /*var urlWithParam = '';
 
         if (re.test(currentUrl)) {
@@ -16,30 +23,52 @@ function Filters()
         }*/
 
         // ternary operator
-        var urlWithParam = re.test(currentUrl)
+        var urlWithParam = urlHasParam(param)
             ? currentUrl.replace(re, urlPart)
             : currentUrl + urlPart;
 
         window.history.pushState(null, null, urlWithParam);
     };
 
+    var urlValuesToInput = function (param, field) {
+        if (urlHasParam(param)) {
+            var currentUrl = window.location.search;
+
+            var rawParamStartIndex = currentUrl.search('&' + param + '=' + '[\\d]*');
+            var rawParamEndIndex = currentUrl.indexOf('&', rawParamStartIndex + 1);
+            var urlPart = '';
+
+            if (rawParamEndIndex === -1) {
+                urlPart = currentUrl.slice(rawParamStartIndex);
+            } else {
+                urlPart = currentUrl.slice(
+                    rawParamStartIndex,
+                    rawParamEndIndex
+                );
+            }
+
+            field.value = urlPart.slice(urlPart.indexOf('=') + 1);
+        }
+    };
+
     var initEventsHandlers = function () {
-        minPrice.addEventListener('input', function () {
+        minPriceField.addEventListener('input', function () {
             updateUrl('minPrice', this.value);
         });
 
-        maxPrice.addEventListener('input', function () {
+        maxPriceField.addEventListener('input', function () {
             updateUrl('maxPrice', this.value);
         });
 
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Page loaded!');
+            urlValuesToInput('minPrice', minPriceField);
+            urlValuesToInput('maxPrice', maxPriceField);
         });
     };
 
     var constructor = function () {
-        minPrice = document.getElementById('js-min-price-filter');
-        maxPrice = document.getElementById('js-max-price-filter');
+        minPriceField = document.getElementById('js-min-price-filter');
+        maxPriceField = document.getElementById('js-max-price-filter');
         initEventsHandlers();
     }();
 }
