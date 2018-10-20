@@ -1,0 +1,11 @@
+{
+  "firstName": "Vasya",
+  "lastName":  "Petrov",
+  "age": 24,
+  "email":  "vasya@gmail.com",
+  "hobbies": [
+    "coding",
+    "pubs",
+    "cats"
+  ]
+}
